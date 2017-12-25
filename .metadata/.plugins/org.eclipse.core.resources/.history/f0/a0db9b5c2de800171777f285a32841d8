@@ -1,0 +1,34 @@
+package com.ping.thread;
+
+import java.util.ArrayList;
+
+public class ChildThread extends Thread {
+	private int cnt;
+	private ArrayList<String> sets;
+	
+	public ChildThread (String name, ArrayList<String> sets) {
+		this.setName(name);
+		
+		if ( name.equalsIgnoreCase("Thread #1") ) {
+			this.setPriority(MAX_PRIORITY);
+		}
+		
+		this.sets = sets;
+	}
+	
+	public String getStatus () {
+		return "I am " + this.getName() + " whith priority " + this.getPriority() + " " + sets.get(0) + " whith " + cnt + " iterations";
+	}
+	
+	@Override
+	public void run() {
+		do {
+			try {
+				cnt++;
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				return;
+			}
+		} while ( true );
+	}
+}

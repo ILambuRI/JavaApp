@@ -1,0 +1,25 @@
+package com.ping.thread;
+
+public class ChildThread extends Thread {
+	private int cnt;
+	
+	public ChildThread (String name) {
+		this.setName(name);
+	}
+	
+	public String getStatus () {
+		return "I am " + this.getName() + " whith " + cnt + " iterations";
+	}
+	
+	@Override
+	public void run() {
+		do {
+			try {
+				cnt++;
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				return;
+			}
+		} while ( true );
+	}
+}

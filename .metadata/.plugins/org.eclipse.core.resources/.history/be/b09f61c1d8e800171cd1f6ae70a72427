@@ -1,0 +1,69 @@
+package com.ping.thread;
+
+import java.util.ArrayList;
+
+public class MainThread extends Thread {
+//	private long startTime = System.currentTimeMillis() / 1000;
+//	private int durationMinutes = 1;
+	
+	private int threadNumber;
+	private int checkInterval;
+	private ArrayList< ArrayList<String> > settings;
+	private ArrayList<ChildThread> childTreads;
+	
+	public MainThread (ArrayList< ArrayList<String> > settings, int checkInterval) {
+		this.settings = settings;
+		this.checkInterval = checkInterval;
+	}
+	
+	@Override
+	public void run() {
+//		childTreads = new ArrayList<ChildThread>();
+		
+		int cntThreads = 1;
+		for (ArrayList<String> element : settings) {
+			childTreads.add( new ChildThread("Thread #" + cntThreads, element, checkInterval) );
+			cntThreads++;
+		}
+		
+		for (ChildThread child : childTreads) {
+			child.start();
+//			System.out.println( child.getStatus() );
+			
+			
+//			try {
+//				child.join();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+		}
+		
+		do {
+//			try {
+//				Thread.sleep(checkInterval);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		} while (true);
+	}
+	
+	public String getStatus() {
+//		System.out.println( "main status" );
+		String childStatus = childTreads.get(0).getStatus();
+		String childStatus = String(childTreads.size());
+//		String childStatus = "main status";
+
+		if ( ++threadNumber > (childTreads.size() - 1) ) {
+			threadNumber = 0;
+		}
+		
+		return childStatus;
+	}
+	
+	public void closeThreads() {
+		for (ChildThread child : childTreads) {
+			child.interrupt();
+		}	
+	}
+}

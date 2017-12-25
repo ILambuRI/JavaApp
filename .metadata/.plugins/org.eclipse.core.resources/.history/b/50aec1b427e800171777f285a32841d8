@@ -1,0 +1,23 @@
+package com.ping.app;
+
+import com.ping.thread.MainThread;
+
+public class —heck—onnection {
+	
+	public void play () {
+		System.out.println("I start checking the connection ...");
+		
+		MainThread main = new MainThread();
+		main.start();
+		
+		try {
+			main.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Finished check.");
+	}
+
+}
