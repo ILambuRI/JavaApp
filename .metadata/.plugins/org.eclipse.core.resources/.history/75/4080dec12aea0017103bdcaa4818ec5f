@@ -1,0 +1,94 @@
+package com.ping.handler;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class InetAddressHandler {
+	private InetAddress address;
+	private String host;
+	
+	public InetAddressHandler(String host) {
+		this.host = host;
+		
+		getInstance();
+	}
+	
+	private InetAddress getInstance() {
+		if (address == null) {
+			try {
+				this.address = InetAddress.getByName(host);
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+//				e.printStackTrace();
+			}
+		}
+		
+		return address;
+	}
+	
+	public String getName() {
+		if (getInstance() == null) {
+			return "";
+		}
+		
+		return getInstance().getHostName();
+	}
+	
+	public boolean getAccess() {
+		boolean access = false;
+		
+		if (getInstance() == null) {
+			return access;
+		}
+		
+		try {
+			access = getInstance().isReachable(1000);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+		}
+		
+		return access;
+	}
+	
+	public String getIp() {
+		if (getInstance() == null) {
+			return "";
+		}
+		
+		return getInstance().getHostAddress();
+	}
+	
+	
+	
+//	public static HashMap<String, String> getResourceInfo(String param) {
+//		HashMap<String, String> info = new HashMap<>();
+//		
+//		try{
+//            InetAddress address = InetAddress.getByName(param);
+//            boolean check = address.isReachable(1000);
+//            
+//            String reachable = "No";
+//            if (check == true) {
+//            	reachable = "Yes";
+//            }
+//            
+//            info.put( "hostName", address.getHostName() );
+//            info.put( "hostIp", address.getHostAddress() );
+//            info.put( "hostAvailable", reachable );
+//            
+//            
+////            System.out.println("Is host reachable? " + reachable);
+////            System.out.println("Is host name? " + address.getHostName());
+////            System.out.println("Is host IP? " + address.getHostAddress());
+//            
+//        } catch (Exception e){
+//        	info.put( "hostName",  param);
+//            info.put( "hostIp", "Undefined" );
+//            info.put( "hostAvailable", "Undefined" );
+////            e.printStackTrace();
+//        }
+//		return info;
+//	}
+}

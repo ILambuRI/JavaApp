@@ -1,0 +1,20 @@
+package com.ping.helper;
+
+public class UserInputValidator {
+	private static Pattern p = Pattern.compile(pattern);
+	
+	public static boolean address() {
+		
+		return false;
+	}
+	
+	public static boolean priority() {
+		
+		return false;
+	}
+	
+	public static boolean type() {
+		
+		return false;
+	}
+}

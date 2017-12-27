@@ -1,0 +1,11 @@
+package com.ping.helper;
+
+public class InputValidator {
+	public static boolean address() {
+		
+	}
+	
+	public static boolean address() {
+		
+	}
+}

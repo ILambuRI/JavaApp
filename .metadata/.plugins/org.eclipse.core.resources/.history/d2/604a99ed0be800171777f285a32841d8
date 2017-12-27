@@ -1,5 +1,0 @@
-package com.ping.thread;
-
-public class ChildThread {
-
-}

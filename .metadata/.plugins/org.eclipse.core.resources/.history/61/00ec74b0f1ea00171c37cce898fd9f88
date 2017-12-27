@@ -1,0 +1,65 @@
+package com.ping.helper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+import com.app.main.AppConfig;
+import com.ping.view.Chatter;
+
+public class UserInputHandler {
+	static Scanner input = new Scanner(System.in);
+	
+	public static ArrayList< HashMap<String, String> > requestAddress() {
+		ArrayList< HashMap<String, String> > settings = new ArrayList<>();
+		String need;
+		
+		do {
+			HashMap<String, String> sets = new HashMap<>();
+			
+			String address = null;
+			do {
+				if ( address != null ) {
+					Chatter.sayLn(AppConfig.INVALID_ADDRESS);
+				}
+				
+				Chatter.say(AppConfig.ENTER_ADDRESS);
+				address = input.nextLine();
+			} while ( UserInputValidator.address(address) == false );
+			
+			String priority = null;
+			do {
+				if (priority != null) {
+					Chatter.sayLn("Not correct input, only 1 digit!");
+				}
+				
+				Chatter.say(AppConfig.ENTER_PRIORITY);
+				priority = input.nextLine();
+			} while (UserInputValidator.priority(priority) == false);
+			
+			
+			sets.put("address", address);
+			sets.put("priority", priority);
+			settings.add(sets);
+			
+			System.out.print(AppConfig.ENTER_ANOTHER);
+			need = input.nextLine();
+		} while ( !need.equals("n") );
+				
+		return settings;
+	}
+	
+	public static String requestOutputType() {
+		String type = null;
+		do {
+			if (type != null) {
+				Chatter.sayLn("Not correct input, only 1 digit!");
+			}
+			
+			Chatter.say(AppConfig.ENTER_TYPE_OUTPUT);
+			type = input.nextLine();
+		} while (UserInputValidator.type(type) == false);
+		
+		return type;
+	}
+}

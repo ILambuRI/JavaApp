@@ -1,0 +1,49 @@
+package com.ping.handler;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+import com.ping.view.Chatter;
+
+public class UserInputHandler {
+	
+	public static ArrayList< HashMap<String, String> > requestAddress() {
+		ArrayList< HashMap<String, String> > settings = new ArrayList<>();
+		String need;
+		Scanner in = new Scanner(System.in);
+		
+		do {
+			HashMap<String, String> sets = new HashMap<>();
+			
+			Chatter.say("Please enter the address: ");
+			String address = in.nextLine();
+			
+			Chatter.say("Enter the priority for it (1 - min | 2 - normal | 3 - max): ");
+			String priority = in.nextLine();
+			
+			sets.put("address", address);
+			sets.put("priority", priority);
+			settings.add(sets);
+			
+			System.out.print("Another one? (y|n): ");
+			need = in.nextLine();
+		} while ( !need.equals("n") );
+		
+		in.close();
+		
+		return settings;
+	}
+	
+	public static String requestOutputType() {
+		String type = "";
+		Scanner in = new Scanner(System.in);
+		
+		Chatter.say("Please choose the type of output (1 - all | 2 - in sequence): ");
+		type = in.nextLine();
+		
+		in.close();
+		
+		return type;
+	}
+}

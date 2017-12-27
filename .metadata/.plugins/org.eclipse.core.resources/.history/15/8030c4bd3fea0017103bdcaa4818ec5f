@@ -1,0 +1,46 @@
+package com.ping.handler;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class UserInputHandler {
+	private ArrayList< HashMap<String, String> > settings = new ArrayList<>();
+	
+	public void sayMe() {
+		String need = "y";
+		Scanner in = new Scanner(System.in);
+		
+		do {
+			System.out.print("Please enter the address: ");
+			String name = in.nextLine();
+			System.out.print("Введите возраст: ");
+			int age = in.nextInt();
+			in.close();
+			System.out.println("Ваше имя: " + name + "   Ваш возраст: " + age);
+		} while ( need.equals("y") );
+		
+		HashMap<String, String> set1 = new HashMap<>();
+		set1.put("address", "google.com");
+		set1.put("priority", "3");
+		
+		HashMap<String, String> set2 = new HashMap<>();
+		set2.put("address", "ya.ru");
+		set2.put("priority", "1");
+		
+		HashMap<String, String> set3 = new HashMap<>();
+		set3.put("address", "111.222.333.8");
+		set3.put("priority", "1");
+		
+		HashMap<String, String> set4 = new HashMap<>();
+		set4.put("address", "google.ru");
+		set4.put("priority", "2");
+		
+		
+		settings.add(set1);
+		settings.add(set2);
+		settings.add(set3);
+		settings.add(set4);
+	}
+		
+}

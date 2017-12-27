@@ -1,0 +1,15 @@
+package com.app.main;
+
+public class AppConfig {
+	public static final int WORKING_TIME_MINUTES = 1;
+	public static final int INTERVAL_TIME_SECONDS = 5;
+	
+	public static final String TEXT_START_CHECK = "I start checking the connection ...";
+	public static final String TEXT_END_CHECK = "Finished check.";
+	
+	//
+	public static final String NO_RESULT = "No result";
+	public static final String UNDEFINED = "Undefined";
+	public static final String HOST_AVAILABLE_TRUE = "Yes";
+	public static final String HOST_AVAILABLE_FALSE = "No";
+}

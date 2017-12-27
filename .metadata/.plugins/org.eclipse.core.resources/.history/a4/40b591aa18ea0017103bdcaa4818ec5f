@@ -1,0 +1,42 @@
+package com.ping.handler;
+
+import java.net.InetAddress;
+import java.util.HashMap;
+
+public class InetAddressHandler {
+	private 
+	
+	public InetAddressHandler() {
+		InetAddress address = InetAddress.getByName(param);
+	}
+	
+	public static HashMap<String, String> getResourceInfo(String param) {
+		HashMap<String, String> info = new HashMap<>();
+		
+		try{
+            InetAddress address = InetAddress.getByName(param);
+            boolean check = address.isReachable(1000);
+            
+            String reachable = "No";
+            if (check == true) {
+            	reachable = "Yes";
+            }
+            
+            info.put( "hostName", address.getHostName() );
+            info.put( "hostIp", address.getHostAddress() );
+            info.put( "hostAvailable", reachable );
+            
+            
+//            System.out.println("Is host reachable? " + reachable);
+//            System.out.println("Is host name? " + address.getHostName());
+//            System.out.println("Is host IP? " + address.getHostAddress());
+            
+        } catch (Exception e){
+        	info.put( "hostName",  param);
+            info.put( "hostIp", "Undefined" );
+            info.put( "hostAvailable", "Undefined" );
+//            e.printStackTrace();
+        }
+		return info;
+	}
+}

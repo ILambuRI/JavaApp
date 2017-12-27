@@ -10,11 +10,12 @@ org.eclipse.jdt.ui.text.code_templates_migrated=true
 org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.templates_migrated=true
+semanticHighlighting.class.color=128,128,255
 semanticHighlighting.field.color=202,230,130
-semanticHighlighting.localVariable.color=212,196,169
-semanticHighlighting.localVariableDeclaration.color=212,196,169
-semanticHighlighting.method.color=243,246,238
-semanticHighlighting.methodDeclarationName.color=243,246,238
+semanticHighlighting.localVariable.color=157,157,255
+semanticHighlighting.localVariableDeclaration.color=128,128,255
+semanticHighlighting.method.color=0,255,64
+semanticHighlighting.methodDeclarationName.color=0,255,64
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

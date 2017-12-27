@@ -1,0 +1,33 @@
+package com.ping.handler;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class UserInputHandler {
+	private ArrayList< HashMap<String, String> > settings = new ArrayList<>();
+	
+	public ArrayList< HashMap<String, String> > sayMe() {
+		String need = "y";
+		Scanner in = new Scanner(System.in);
+		
+		do {
+			HashMap<String, String> sets = new HashMap<>();
+			
+			System.out.print("Please enter the address: ");
+			String address = in.nextLine();
+			System.out.print("Enter the priority for it (1 - min | 2 - normal | 3 - max)");
+			String priority = in.nextLine();
+			in.close();
+			
+			sets.put("address", address);
+			sets.put("priority", priority);
+			settings.add(sets);
+			
+			System.out.print("Another one? (y|n): ");
+			need = in.nextLine();
+		} while ( need.equals("y") );
+		
+		return settings;
+	}
+}

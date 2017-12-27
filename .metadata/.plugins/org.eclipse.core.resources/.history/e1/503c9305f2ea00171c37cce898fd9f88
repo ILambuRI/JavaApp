@@ -1,0 +1,47 @@
+package com.ping.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.app.main.AppConfig;
+import com.ping.helper.UserInputHandler;
+import com.ping.model.MainThread;
+import com.ping.view.Chatter;
+
+public class —heck—onnection {
+	private long startTime;
+	private int durationMinutes = AppConfig.WORKING_TIME_MINUTES;
+	private int checkInterval = AppConfig.INTERVAL_TIME_SECONDS * 1000;
+	
+	public void play () {
+		
+		ArrayList< HashMap<String, String> > settings = UserInputHandler.requestAddress();
+		String type = UserInputHandler.requestOutputType();
+				
+		MainThread main = new MainThread(settings, checkInterval);
+		main.start();
+		
+		startTime = System.currentTimeMillis() / 1000;
+		
+		Chatter.sayLn(AppConfig.TEXT_START_CHECK);
+		
+		do {
+			if ( type.equals("1") ) {
+				Chatter.sayAllThreadStatusLn( main.getAllStatus() );
+			} else {
+				Chatter.sayOneThreadStatusLn( main.getNextStatus() );
+			}
+						
+			try {
+				Thread.sleep(checkInterval);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} while ( (System.currentTimeMillis() / 1000) <= (startTime + (durationMinutes * 60) - (checkInterval / 1000)) );
+		
+		main.closeThreads();
+		main.interrupt();
+		
+		Chatter.sayLn(AppConfig.TEXT_END_CHECK);
+	}
+}

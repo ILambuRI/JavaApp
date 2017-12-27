@@ -1,0 +1,22 @@
+package com.ping.helper;
+
+import java.util.regex.Pattern;
+
+public class UserInputValidator {
+	private static Pattern pattern = new Pattern();
+	
+	public static boolean address() {
+		
+		return false;
+	}
+	
+	public static boolean priority() {
+		
+		return false;
+	}
+	
+	public static boolean type() {
+		
+		return false;
+	}
+}

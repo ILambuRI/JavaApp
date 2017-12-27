@@ -1,0 +1,18 @@
+package com.ping.helper;
+
+public class InputValidator {
+	public static boolean address() {
+		
+		return false;
+	}
+	
+	public static boolean priority() {
+		
+		return false;
+	}
+	
+	public static boolean type() {
+		
+		return false;
+	}
+}

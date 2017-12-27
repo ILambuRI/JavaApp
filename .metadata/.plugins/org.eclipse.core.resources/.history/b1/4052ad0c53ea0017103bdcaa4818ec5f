@@ -1,0 +1,45 @@
+package com.ping.view;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Chatter {
+	
+	
+	public static void say(String words) {
+		System.out.print(words);
+	}
+	
+	public static void sayLn(String words) {
+		System.out.println(words);
+	}
+	
+	public static void sayOneThreadStatusLn(HashMap<String, String> status) {
+		if (status.size() < 1) {
+			System.out.println("No results yet ...");
+		} else {
+			System.out.println(
+				"Thread#" + status.get("threadName") + " (Priority: " + status.get("userPriority") + ")" +
+				" --- " + status.get("hostName") + " (" + status.get("hostIp") + ")" +
+				" --- TimeStamp: " + status.get("timeStamp") +
+				" --- Available: " + status.get("hostAvailable")
+			);
+		}
+	}
+	
+	public static void sayAllThreadStatusLn(ArrayList< HashMap<String, String> > statuses) {
+		if (status.size() < 1) {
+			System.out.println("No results yet ...");
+		} else {
+			for (HashMap<String, String> status : statuses) {
+				System.out.println(
+						"Thread#" + status.get("threadName") + " (Priority: " + status.get("userPriority") + ")" +
+						" --- " + status.get("hostName") + " (" + status.get("hostIp") + ")" +
+						" --- TimeStamp: " + status.get("timeStamp") +
+						" --- Available: " + status.get("hostAvailable")
+				);
+			}
+			
+		}
+	}
+}

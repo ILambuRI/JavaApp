@@ -1,0 +1,25 @@
+package com.ping.view;
+
+import java.util.HashMap;
+
+public class Chatter {
+	
+	
+	public static void say(String words) {
+		System.out.print(words);
+	}
+	
+	public static void sayLn(String words) {
+		System.out.println(words);
+	}
+	
+	public static void sayThreadStatusLn(HashMap<String, String> status) {
+		
+		System.out.println(
+			"Thread#" + status.get("threadName") + " (Priority: " + status.get("userPriority") + ")" +
+			" --- " + status.get("hostName") + " (" + status.get("hostIp") + ")" +
+			" --- TimeStamp: " + status.get("timeStamp") +
+			" --- Available: " + status.get("hostAvailable")
+		);
+	}
+}

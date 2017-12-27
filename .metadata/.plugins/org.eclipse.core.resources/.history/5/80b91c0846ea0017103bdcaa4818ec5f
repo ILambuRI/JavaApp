@@ -1,0 +1,63 @@
+package com.ping.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.ping.handler.UserInputHandler;
+import com.ping.model.MainThread;
+
+public class —heck—onnection {
+	private long startTime;
+	private int durationMinutes = 1;
+	private int checkInterval = 1 * 1000;
+	
+	public void play () {
+		
+		UserInputHandler userInput = new UserInputHandler();
+		ArrayList< HashMap<String, String> > settings = userInput.requestAddress();
+		
+//		HashMap<String, String> set1 = new HashMap<>();
+//		set1.put("address", "google.com");
+//		set1.put("priority", "3");
+//		
+//		HashMap<String, String> set2 = new HashMap<>();
+//		set2.put("address", "ya.ru");
+//		set2.put("priority", "1");
+//		
+//		HashMap<String, String> set3 = new HashMap<>();
+//		set3.put("address", "111.222.333.8");
+//		set3.put("priority", "1");
+//		
+//		HashMap<String, String> set4 = new HashMap<>();
+//		set4.put("address", "google.ru");
+//		set4.put("priority", "2");
+//		
+//		ArrayList< HashMap<String, String> > settings = new ArrayList<>();
+//		settings.add(set1);
+//		settings.add(set2);
+//		settings.add(set3);
+//		settings.add(set4);
+		
+		MainThread main = new MainThread(settings, checkInterval);
+		main.start();
+		
+		startTime = System.currentTimeMillis() / 1000;
+		
+		System.out.println("I start checking the connection ...");
+		
+		do {			
+			System.out.println( main.getStatus() );
+			
+			try {
+				Thread.sleep(checkInterval);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} while ( (System.currentTimeMillis() / 1000) <= (startTime + (durationMinutes * 60) - (checkInterval / 1000)) );
+		
+		main.closeThreads();
+		main.interrupt();
+				
+		System.out.println("Finished check.");
+	}
+}

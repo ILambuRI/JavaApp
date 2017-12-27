@@ -1,0 +1,68 @@
+package com.ping.thread;
+
+import java.util.HashMap;
+
+import com.ping.handler.InetAddressHandler;
+
+public class ChildThread extends Thread {
+	private int cnt;
+	private int checkInterval;
+	private String address;
+	private String priority;
+	HashMap<String, String> childInfo = new HashMap<>();
+	
+	public ChildThread (String name, HashMap<String, String> sets, int checkInterval) {
+		this.setName(name);
+		this.checkInterval = checkInterval;
+		this.address = sets.get("address");
+		this.priority = sets.get("priority");
+		setPriority();
+		setDefaultStatus();
+	}
+	
+	@Override
+	public void run() {
+		do {
+			try {
+				cnt++;
+				
+				childInfo.put("iteration", Integer.toString(cnt));
+				childInfo.putAll(InetAddressHandler.getResourceInfo(address));
+				
+				Thread.sleep(checkInterval);
+			} catch (InterruptedException e) {
+				return;
+			}
+		} while (true);
+	}
+	
+	public HashMap<String, String> getStatus() {
+		return childInfo;
+		
+//		return "I am " + this.getName() + " whith priority " + this.getPriority() + " (sets: " + priority + ") " + address + "(Available: " + available + ") whith " + cnt + " iterations";
+	}
+	
+	private void setPriority() {
+		switch (priority) {
+			case "1": this.setPriority(Thread.MIN_PRIORITY);
+			break;
+			
+			case "2": this.setPriority(Thread.NORM_PRIORITY);
+			break;
+			
+			case "3": this.setPriority(Thread.MAX_PRIORITY);
+			break;
+		}
+	}
+	
+	private void setDefaultStatus() {
+		childInfo.put("name", this.getName());
+		childInfo.put("threadPriority", Integer.toString(this.getPriority()));
+		childInfo.put("userPriority", priority);
+		childInfo.put("iteration", Integer.toString(cnt));
+		childInfo.put("hostName", address);
+		childInfo.put("hostIp", "Undefined");
+		childInfo.put("hostAvailable", "No result" );
+	}
+	
+}

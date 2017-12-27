@@ -1,0 +1,69 @@
+package com.ping.model;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class MainThread extends Thread {
+	private int threadNumber;
+	private int checkInterval;
+	private ArrayList< HashMap<String, String> > settings;
+	private static ArrayList<ChildThread> childTreads = new ArrayList<ChildThread>();
+	
+	public MainThread (ArrayList< HashMap<String, String> > settings, int checkInterval) {
+		this.settings = settings;
+		this.checkInterval = checkInterval;
+	}
+	
+	@Override
+	public void run() {		
+		int cntThreads = 1;
+		for (HashMap<String, String> element : settings) {
+			    childTreads.add( new ChildThread(Integer.toString(cntThreads), element, checkInterval) );
+			    cntThreads++;
+		}
+		
+		for (ChildThread child : childTreads) {
+			child.start();
+		}
+	}
+	
+	public HashMap<String, String> getNextStatus() {
+		HashMap<String, String> childStatus = new HashMap<>();
+		
+		if (childTreads.size() > 0) {
+			childStatus = childTreads.get(threadNumber).getStatus();
+			
+			if ( ++threadNumber > (childTreads.size() - 1) ) {
+				threadNumber = 0;
+			}
+		}
+
+		
+		return childStatus;
+	}
+	
+	public ArrayList< HashMap<String, String> > getAllStatus() {
+		ArrayList< HashMap<String, String> > childStatus = new ArrayList<>();
+		
+		for () {
+			
+		}
+		
+		if (childTreads.size() > 0) {
+			childStatus = childTreads.get(threadNumber).getStatus();
+			
+			if ( ++threadNumber > (childTreads.size() - 1) ) {
+				threadNumber = 0;
+			}
+		}
+
+		
+		return childStatus;
+	}
+	
+	public void closeThreads() {
+		for (ChildThread child : childTreads) {
+			child.interrupt();
+		}	
+	}
+}

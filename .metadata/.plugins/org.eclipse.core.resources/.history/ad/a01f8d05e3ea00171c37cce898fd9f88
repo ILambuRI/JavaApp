@@ -1,0 +1,24 @@
+package com.ping.helper;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class UserInputValidator {
+	
+	public static boolean address(String userAddress) {
+		Pattern p = Pattern.compile("[\\w\\d-]+\\.[\\w\\d]{2,}");
+        Matcher m = p.matcher(userAddress);  
+        
+        return m.matches();
+	}
+	
+	public static boolean priority() {
+		
+		return false;
+	}
+	
+	public static boolean type() {
+		
+		return false;
+	}
+}

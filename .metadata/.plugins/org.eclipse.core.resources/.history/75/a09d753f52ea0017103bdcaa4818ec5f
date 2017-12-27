@@ -1,0 +1,43 @@
+package com.ping.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.ping.handler.UserInputHandler;
+import com.ping.model.MainThread;
+import com.ping.view.Chatter;
+
+public class —heck—onnection {
+	private long startTime;
+	private int durationMinutes = 1;
+	private int checkInterval = 5 * 1000;
+	
+	public void play () {
+		
+		UserInputHandler userInput = new UserInputHandler();
+		ArrayList< HashMap<String, String> > settings = userInput.requestAddress();
+				
+		MainThread main = new MainThread(settings, checkInterval);
+		main.start();
+		
+		startTime = System.currentTimeMillis() / 1000;
+		
+		Chatter.sayLn("I start checking the connection ...");
+		
+		do {			
+			Chatter.sayThreadStatusLn( main.getNextStatus() );
+//			System.out.println( main.getStatus() );
+			
+			try {
+				Thread.sleep(checkInterval);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} while ( (System.currentTimeMillis() / 1000) <= (startTime + (durationMinutes * 60) - (checkInterval / 1000)) );
+		
+		main.closeThreads();
+		main.interrupt();
+		
+		Chatter.sayLn("Finished check.");
+	}
+}
