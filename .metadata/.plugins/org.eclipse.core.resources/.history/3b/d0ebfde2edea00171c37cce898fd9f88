@@ -1,7 +1,0 @@
-package com.app.main;
-
-public class AppConfig {
-	public static final int WORKING_TIME_MINUTES = 1;
-	public static final int INTERVAL_TIME_SECONDS = 5;
-	public static final int TEXT_START_ = 5;
-}

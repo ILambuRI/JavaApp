@@ -6,10 +6,21 @@ import java.util.regex.Pattern;
 public class UserInputValidator {
 	
 	public static boolean address(String userAddress) {
-		Pattern pattern = Pattern.compile("^[\\w\\d-]+\\.[\\w\\d]{2,}$");
-        Matcher match = pattern.matcher(userAddress);  
+		Pattern addressPattern = Pattern.compile("^[\\w\\d-]+\\.[\\w\\d]{2,}$");
+        Matcher addressMatch = addressPattern.matcher(userAddress);  
         
-        return match.matches();
+        if (addressMatch.matches()) {
+        	return true;
+        }
+        
+        Pattern ipPattern = Pattern.compile("\\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\\b");
+        Matcher ipMatch = ipPattern.matcher(userAddress);  
+        
+        if (ipMatch.matches()) {
+        	return true;
+        }
+        
+        return false;
 	}
 	
 	public static boolean priority(String priority) {

@@ -1,5 +1,0 @@
-package com.app.main;
-
-public class AppConfig {
-	public static final int WORKING_TIME = 1;
-}

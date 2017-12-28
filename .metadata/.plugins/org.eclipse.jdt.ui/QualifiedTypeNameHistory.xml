@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.ping.thread.MainThread"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.net.InetAddress"/>
     <fullyQualifiedTypeName name="com.ping.handler.InetAddressHandler"/>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.ping.handler.UserInputHandler"/>
     <fullyQualifiedTypeName name="com.ping.controller.СheckСonnection"/>
-    <fullyQualifiedTypeName name="com.ping.view.Chatter"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
     <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
     <fullyQualifiedTypeName name="com.app.main.AppConfig"/>
+    <fullyQualifiedTypeName name="com.ping.view.Chatter"/>
+    <fullyQualifiedTypeName name="com.doc.parser.XmlParser"/>
+    <fullyQualifiedTypeName name="org.apache.poi.xwpf.usermodel.XWPFDocument"/>
+    <fullyQualifiedTypeName name="org.apache.poi.openxml4j.opc.OPCPackage"/>
+    <fullyQualifiedTypeName name="org.apache.poi.xwpf.usermodel.XWPFParagraph"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="org.apache.poi.xwpf.usermodel.XWPFRun"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="com.msword.parser.DocxParser"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.Map.Entry"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.xml.parser.XmlParser"/>
 </qualifiedTypeNameHistroy>

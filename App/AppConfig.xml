@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConstantsList>
+	<!-- (CheckConnection.java) -->
+	<WORKING_TIME_MINUTES>1</WORKING_TIME_MINUTES>
+	<INTERVAL_TIME_SECONDS>5</INTERVAL_TIME_SECONDS>
+	
+	<!-- Start and end alerts (CheckConnection.java) -->
+	<TEXT_START_CHECK>I start checking the connection ...</TEXT_START_CHECK>
+	<TEXT_END_CHECK>Finished check!</TEXT_END_CHECK>
+	
+	<!-- Alert if array is empty  (Chatter.java)-->
+	<NO_RESULTS_YET>No results yet ... wait plz ...</NO_RESULTS_YET>
+	
+	<!-- For result array in child thread (ChildeThread.java) -->
+	<NO_RESULT>No result</NO_RESULT>
+	<UNDEFINED>Undefined</UNDEFINED>
+	<HOST_AVAILABLE_TRUE>Yes</HOST_AVAILABLE_TRUE>
+	<HOST_AVAILABLE_FALSE>No</HOST_AVAILABLE_FALSE>
+	
+	<!-- Text requests from the user (UserInputHandler.java) -->
+	<ENTER_ADDRESS>Please enter the address: </ENTER_ADDRESS>
+	<ENTER_PRIORITY>Enter the priority for it (1 - min | 2 - normal | 3 - max): </ENTER_PRIORITY>
+	<ENTER_ANOTHER>Another one? (y|n): </ENTER_ANOTHER>
+	<ENTER_TYPE_OUTPUT>Please choose the type of output (1 - all | 2 - in sequence): </ENTER_TYPE_OUTPUT>
+	
+	<INVALID_ADDRESS>Invalid input (Example: \"y.ua\" or \"8.8.8.8\")</INVALID_ADDRESS>
+	<INVALID_PRIORITY>Not correct input, only 1 digit!</INVALID_PRIORITY>
+	<INVALID_TYPE>Not correct input, only 1 digit!</INVALID_TYPE>
+</ConstantsList>
